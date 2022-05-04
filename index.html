@@ -12,16 +12,16 @@
 </head>
 <body>
     
-   <h1 id="nothing"> nothing </h1>
+   <h1 id="nothing"> </h1>
 
-    <h2 id="makes"> makes </h2>
+    <h2 id="makes"> </h2>
     
-    <h3 id="sense"> sense </h3>
+    <h3 id="sense"> </h3>
 
 
     
-    <button id="btnClick">here</button>
-    <img id="image">
+    <button id="btnClick" onclick="getdog();"> </button>
+    <img id="dogImage">
 
 
 </body>
@@ -30,7 +30,7 @@
 <script>
 
     
-getdog();
+//getdog();
 function getdog() {
    $.ajax({
     type: 'GET',
@@ -43,7 +43,8 @@ function getdog() {
     complete: function (data) {
         if (data.readyState === 4 && data.status === 200) {
             console.log(data);
-            dog = data.responseJSON;
+            dog = data.responseJSON.message;
+            document.getElementById("dogImage").src = dog; 
             console.log(dog)
         }
         }
