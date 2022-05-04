@@ -40,14 +40,18 @@ function draw() {
 //};
 
 
-
 //setBackgroundColor();
 
 //setInterval(() => {
   //setBackgroundColor();
 //}, 1500);
 
-//this is the launchpad stuff
+
+
+
+
+
+//THIS IS THE LAUNCHPAD STUFF
 //console.log(navigator);
 
 if (navigator.requestMIDIAccess){
@@ -113,23 +117,41 @@ function noteOn(note){
     if (note == 78){
         document.getElementById("sense").innerHTML = "sense"
     }
+    if (note == 84){
+        document.getElementById("btnClick").innerHTML = "here"
+    }
+
+
 }
+
 
 function noteOff(note){
     console.log(`note:${note} //off`);
     if (note == 82){
-        document.getElementById("nothing").innerHTML = "nope"
+        document.getElementById("nothing").innerHTML = " "
     }
     if (note == 80){
-        document.getElementById("makes").innerHTML = "nope"
+        document.getElementById("makes").innerHTML = " "
     }
     if (note == 78){
-        document.getElementById("sense").innerHTML = "nope"
+        document.getElementById("sense").innerHTML = " "
+    }
+    if (note == 84){
+        document.getElementById("btnClick").innerHTML = " "
     }
 }
 
-
-
-
-
 }
+
+let btn = document.getElementById('btnClick')
+let image = document.getElementById('image')
+
+btn.addEventListener('click', function() {
+    fetch("https://dog.ceo/api/breeds/image/random")
+    .then(res => res.json())
+    .then(result => {
+        console.log(result)
+        image.src = result.message
+    })
+    .catch(err=>console.log(err))
+})

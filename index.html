@@ -5,16 +5,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./p5.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js" integrity="sha512-NxocnqsXP3zm0Xb42zqVMvjQIktKEpTIbCXXyhBPxqGZHqhcOXHs4pXI/GoZ8lE+2NJONRifuBpi9DxC58L0Lw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>diana's Project 3</title>
 </head>
 <body>
     
-    <h1 id="nothing">nothing</h1>
+   <h1 id="nothing"> nothing </h1>
 
-    <h2 id="makes">makes</h2>
+    <h2 id="makes"> makes </h2>
     
-    <h3 id="sense"> sense</h3>
+    <h3 id="sense"> sense </h3>
+
+
+    
+    <button id="btnClick">here</button>
+    <img id="image">
+
 
 </body>
 </html>
+
+<script>
+
+    
+getdog();
+function getdog() {
+   $.ajax({
+    type: 'GET',
+    //GET POST
+    dataType: 'json',
+    url: 'https://dog.ceo/api/breeds/image/random',
+    async: false,
+    crossDomain: true,
+    // what to do when the call finishes
+    complete: function (data) {
+        if (data.readyState === 4 && data.status === 200) {
+            console.log(data);
+            dog = data.responseJSON;
+            console.log(dog)
+        }
+        }
+        
+    
+       }
+    
+       );
+    }
+    
+    </script>
+    
+    
